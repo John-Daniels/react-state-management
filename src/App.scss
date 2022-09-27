@@ -7,21 +7,53 @@
   }
 }
 
+.status-bar {
+  // position: absolute;
+  // top: 5;
+  // right: 0;
+
+  margin: 1px 5px;
+  width: 30px;
+  height: 10px;
+
+  border-radius: 50px;
+  background-color: #ccc;
+
+  &.completed {
+    background-color: green;
+  }
+
+  &.incompleted {
+    background-color: red;
+  }
+}
+
+.todos {
+  margin-top: 10px;
+
+  max-width: 80%;
+  max-height: 400px;
+
+  overflow: auto;
+}
 .todo-item {
   border: 1px solid #ccc;
   height: 100px;
+  width: 100%;
   padding: 1rem;
   color: rgb(66, 64, 64);
 
-  position: relative;
+  flex-direction: column;
+
+  // position: relative;
 
   .icon {
-    position: absolute;
-    top: 5;
-    right: 0;
+    // position: absolute;
+    // top: 5;
+    // right: 0;
 
     margin: 5px;
-    width: 10px;
+    width: 30px;
     height: 10px;
 
     border-radius: 50px;
@@ -33,6 +65,16 @@
 
     &.incompleted {
       background-color: red;
+    }
+  }
+
+  small {
+    text-decoration: underline;
+
+    cursor: pointer;
+
+    &:hover {
+      color: #888181;
     }
   }
 }
@@ -81,7 +123,7 @@ button {
   background-color: var(--primary-color);
   font-family: var(--font-base);
 
-  height: 100vh;
+  min-height: 100vh;
   flex-direction: column;
 }
 

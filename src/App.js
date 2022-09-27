@@ -17,7 +17,16 @@ const App = () => {
   const submit = (e) => {
     e.preventDefault()
 
+    if (form.text.length < 3) return
     setTodos((prevTodos) => [...prevTodos, form])
+  }
+
+  const markComplete = (text) => {
+    const index = todos.findIndex((todo) => todo.text == text)
+
+    todos[index].completed = true
+
+    setTodos((prevTodos) => [...todos])
   }
 
   return (
@@ -32,20 +41,31 @@ const App = () => {
         />
         <button>add</button>
       </form>
+      <div className='app__flex'>
+        <div className='app__flex'>
+          <div className='status-bar completed' /> <small>completed</small>
+        </div>
+        <div className='app__flex'>
+          <div className='status-bar incompleted' /> <small>incompleted</small>
+        </div>
+      </div>
 
-      <div className=''>
+      <div className='todos'>
         {todos.map((item, index) => (
-          <TodoItem item={item} key={index} />
+          <TodoItem item={item} key={index} onMarkComplete={markComplete} />
         ))}
       </div>
     </div>
   )
 }
 
-const TodoItem = ({ item: { text, completed } }) => (
+const TodoItem = ({ item: { text, completed }, onMarkComplete }) => (
   <div className='todo-item app__flex'>
-    <h2>{text}</h2>
     <div className={`icon ${completed ? "completed" : "incompleted"}`} />
+    <h2>{text}</h2>
+    {!completed && (
+      <small onClick={() => onMarkComplete(text)}>mark as completed</small>
+    )}
   </div>
 )
 
