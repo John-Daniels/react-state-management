@@ -1,0 +1,15 @@
+.leftbar {
+  max-width: 22%;
+  height: calc(100vh - 51px);
+  border-right: solid 1px lightgray;
+}
+
+.leftbarWrapper {
+  padding: 20px;
+}
+
+@media only screen and (max-width: 700px) {
+  .leftbar {
+    max-width: 15%;
+  }
+}
